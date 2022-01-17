@@ -1,0 +1,20 @@
+server:
+    port: 8761
+    
+spring:  
+     cloud:
+       discovery:
+          enabled: true 
+     zipkin:
+       base-url:  http://localhost:9411
+  
+    
+eureka:
+    client:
+      register-with-eureka: false
+      fetch-registry: false
+    instance:
+      hostname: localhost
+     
+##      prefer-ip-address: true
+  

@@ -1,0 +1,47 @@
+server:
+  port: 9191
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: MASTERDATA-SERVICE
+        uri: lb://MASTERDATA-SERVICE
+        predicates:
+          - Path=/olx/masterdata/**
+      - id: ADVERTISE-SERVICE
+        uri: lb://ADVERTISE-SERVICE
+        predicates:
+          - Path=/olx/advertise/**
+      - id: LOGIN-SERVICE
+        uri: lb://LOGIN-SERVICE
+        predicates:
+          - Path=/olx/login/**
+      enabled: true
+    discovery:
+      enabled: true
+        
+      
+        
+          
+  zipkin:
+     base-url:  http://localhost:9411
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    spring.cloud.discovery.enabled=true
+  instance:
+      hostname: localhost
+#      instance-id: ${spring.application.name}:{random.uuid}
+      
+      
+  
+    
+     
+    
